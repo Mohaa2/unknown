@@ -22,7 +22,6 @@ const Game = ({lives,setLives,score,setScore}) => {
         if(parseInt(test.current.style.width) >= 100){
           gameOver()
           test.current.style.width = '0%'
-          console.log(lives)
         }else{
           if(lives){
             test.current.style.width = `${parseInt(test.current.style.width) + 1}%`
@@ -35,7 +34,6 @@ const Game = ({lives,setLives,score,setScore}) => {
       clearInterval(interv)
     }
   }, [lives, BtnState])
-  console.log('render')
   
   const Daudio = new Audio('/sounds/done.mp3')
 
@@ -86,7 +84,6 @@ const Game = ({lives,setLives,score,setScore}) => {
     setLives(5)
   }
 
-
   return (
     <main>
       {/* PROGRESS BAR */}
@@ -97,10 +94,23 @@ const Game = ({lives,setLives,score,setScore}) => {
       {/* COLORS SELECTION  */}
       <div className="colors">
         {colors.map((C,index)=>{
-          return <div key={index}  onClick={()=> CheckCorrect(C.id)}  style={{background: `${C.color}`}} className={`btn btn${index}`}></div>
+          return <div 
+            key={index}  
+            onClick={()=> CheckCorrect(C.id)}
+            // TOUCH EVENT FOR MOBILE
+            
+            onTouchStart={(e)=> { e.target.style.boxShadow = `inset 0px 0px 10px ${C.color} ,1px 1px 15px ${C.color}` }}
+            onTouchEnd={(e)=>{e.target.style.boxShadow = ''}}
+            // CLICK EVENT FOR DESKTOP
+            onMouseDown={(e)=> {e.target.style.boxShadow = `inset 0px 0px 10px ${C.color} ,1px 1px 15px ${C.color}` }}
+            onMouseUp={(e)=>{e.target.style.boxShadow = ''}}
+            style={{background: `${C.color}`}} 
+            className={`btn btn${index}`
+        }>
+      </div>
         })}
       </div>
-      <button onClick={playAgain} style={{display: BtnState}} className='playBtn'>دوسة زرار هتخسرك كتير (عميقة سيكا)</button>
+      <div onClick={playAgain} style={{display: BtnState }}  className='playBtn'>متلعبش تاني!</div>
       {/* PHOTOS */}
       <div className="photos">
         <img src={`/images/${currPhoto}`} alt="funny" />
