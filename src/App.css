@@ -193,6 +193,8 @@ div.playBtn {
   display: flex;
   justify-content: center;
   margin: auto;
+  transform: translateY(-30px);
+
 }
 .photos img {
   width: 50%;
