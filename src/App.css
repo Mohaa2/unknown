@@ -1,0 +1,162 @@
+*{
+  margin: 0;
+  user-select: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+body{
+  background:rgb(36, 38, 39);
+  height: 100vh;
+}
+.playBtn{
+  padding: 6px;
+  border: none;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color:lightgreen;
+  font-weight: bold;
+}
+/* START INTRO  */
+
+.overlay{
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background:rgba(0, 0, 0, 0.823);
+  color:white;
+  z-index: 9999;
+}
+.overlay input{
+  width: 80%;
+  outline: none;
+  border:none;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 30px;
+  background-color: brown;
+  color: white;
+  direction: rtl;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+.overlay button{
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  font-size: 35px;
+  box-shadow: inset 1px 1px 9px black;
+  font-weight: bold;
+  color: rgb(35, 40, 158);
+}
+
+/* END INTRO =============  */
+/* START HEADER  */
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  background: linear-gradient(to bottom, black, rgb(28, 28, 28));
+  box-shadow: 0px 0px 9px black;
+  border-radius: 0 0 8px 8px;
+}
+
+.lives{
+  height:20px;
+}
+.score{
+  background:#00ffe5;
+  box-shadow: inset 1px 1px 15px #00ffe5;
+  border-radius: 8px;
+  min-width: 60px;
+  text-align: center;
+  padding: 8px 15px;
+  font-weight: bold;
+}
+/* END HEADER  ======================== */
+
+
+/* START PROGRESS   */
+
+.progParent{
+  margin: 30px auto;
+  margin-bottom: 10px;
+  width: 60%;
+  height: 40px;
+  border: .1px solid white;
+  border-radius: 26px;
+  overflow:hidden;
+}
+.progIn{
+  width: 50%;
+  height: 100%;
+}
+
+/* END PROGRESS   =====================*/
+
+
+.colors{
+  display: flex;
+  justify-content: center;
+}
+.colors .btn{
+  border-radius: 12% 88% 88% 12% / 50% 50% 50% 50% ;
+  height: 165px;
+  width: 165px;
+}
+.colors .btn:hover{
+  box-shadow:inset 0px 0px 10px rgb(138, 67, 67), 0px 0px 8px black;
+}
+.colors .btn0{
+  transform: rotate(180deg);
+  margin: 40px 20px ;
+}
+.colors .btn1{
+  transform: rotate(-90deg);
+  
+  
+}
+.colors .btn2{
+  transform: rotate(0);
+  margin: 40px 20px ;
+}
+
+@media (max-width: 660px){
+  .colors .btn{
+    height: 100px;
+    width: 100px;
+  }
+}
+@media (max-width: 400px){
+  .colors .btn{
+    height: 80px;
+    width: 80px;
+  }
+}
+/* END COLORS  ===================== */
+
+/* START PHOTOS */
+.photos{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.photos img{
+  width: 50%;
+}
+@media (max-width: 600px){
+  .photos img{
+    height: 400px;
+    width: 100%;
+  }
+}
