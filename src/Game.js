@@ -9,10 +9,11 @@ const Game = ({lives,setLives,score,setScore}) => {
   let photos = ['1.webp','2.webp','3.webp','4.webp','5.gif','6.gif','7.gif','8.jpg']
   let test = useRef()
   const [currColor , setCurrColor] = useState(colors[Math.floor(Math.random() * colors.length)].id)
-
+  
   let [currPhoto, setCurrPhoto] = useState(photos[0])
-
+  
   let [BtnState, setBtnState] = useState('block')
+  
 
   let interv = null
   useEffect(() => {
@@ -27,27 +28,25 @@ const Game = ({lives,setLives,score,setScore}) => {
             test.current.style.width = `${parseInt(test.current.style.width) + 1}%`
           }
         }
-      },12);
+      },15);
     }
-
+    
     return ()=>{
       clearInterval(interv)
     }
   }, [lives, BtnState])
   console.log('render')
-
+  
   const Daudio = new Audio('/sounds/done.mp3')
 
   function CheckCorrect(id){
     
     if(BtnState === 'none'){
-      if(id === currColor){
+      if(id === currColor && parseInt(test.current.style.width) < 100){
         setScore(prev => prev+10)
-        setCurrColor(colors[Math.floor(Math.random() * colors.length)].id)
-        
+        setCurrColor(colors[Math.floor(Math.random() * colors.length)].id) 
         Daudio.pause()
         Daudio.play()
-
       }else{
         gameOver()
       }
@@ -64,9 +63,9 @@ const Game = ({lives,setLives,score,setScore}) => {
     if(score <= 700 && score > 600) setCurrPhoto(photos[6])
     if( score >= 700) gameOver()
   }, [score])
-
-  const Faudio = new Audio('/sounds/buzz.wav')
+  
   // GAME OVER FUNCTION
+  const Faudio = new Audio('/sounds/buzz.wav')
   function gameOver(){
     if(lives <= 1){
       clearInterval(interv)
@@ -78,7 +77,6 @@ const Game = ({lives,setLives,score,setScore}) => {
     }
     Faudio.pause()
     Faudio.play()
-
   }
 
   
