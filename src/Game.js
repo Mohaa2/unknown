@@ -36,13 +36,18 @@ const Game = ({lives,setLives,score,setScore}) => {
   }, [lives, BtnState])
   console.log('render')
 
+  const Daudio = new Audio('/sounds/done.mp3')
 
   function CheckCorrect(id){
     
     if(BtnState === 'none'){
       if(id === currColor){
         setScore(prev => prev+10)
-        setCurrColor(colors[Math.floor(Math.random() * colors.length)].id) 
+        setCurrColor(colors[Math.floor(Math.random() * colors.length)].id)
+        
+        Daudio.pause()
+        Daudio.play()
+
       }else{
         gameOver()
       }
@@ -60,6 +65,7 @@ const Game = ({lives,setLives,score,setScore}) => {
     if( score >= 700) gameOver()
   }, [score])
 
+  const Faudio = new Audio('/sounds/buzz.wav')
   // GAME OVER FUNCTION
   function gameOver(){
     if(lives <= 1){
@@ -70,6 +76,9 @@ const Game = ({lives,setLives,score,setScore}) => {
     }else{
       setLives(prev => prev - 1)
     }
+    Faudio.pause()
+    Faudio.play()
+
   }
 
   
