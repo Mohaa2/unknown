@@ -81,6 +81,7 @@ const Game = ({lives,setLives,score,setScore}) => {
   function playAgain(){
     setScore(0)
     setBtnState('none')
+    setCurrPhoto(photos[0])
     setLives(5)
   }
 
