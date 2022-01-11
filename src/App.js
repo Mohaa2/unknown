@@ -2,7 +2,6 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import Header from './Header';
 import Game from './Game';
-import Intro from './Intro';
 
 function App() {
   const [lives, setLives] = useState(5)
@@ -12,7 +11,6 @@ function App() {
 
   return (
     <div className="App">
-      <Intro />
       <Header 
         lives={lives} 
         setLives={setLives} 
