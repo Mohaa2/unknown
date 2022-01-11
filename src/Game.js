@@ -6,7 +6,7 @@ const Game = ({lives,setLives,score,setScore}) => {
     {id:'#FFCE30', color: "#FFCE30"},
     {id:'#122CE7', color: "#122CE7"},
   ])
-  let photos = ['1.webp','2.webp','3.webp','4.webp','5.gif','6.gif','7.gif','8.jpg']
+  let photos = ['1.jpg','8.jpg']
   let test = useRef()
   const [currColor , setCurrColor] = useState(colors[Math.floor(Math.random() * colors.length)].id)
   
@@ -51,16 +51,16 @@ const Game = ({lives,setLives,score,setScore}) => {
       test.current.style.width = '0%'
     }
   }
-  useEffect(() => {
-    if(score <= 100) setCurrPhoto(photos[0])
-    if(score <= 200 && score > 100) setCurrPhoto(photos[1])
-    if(score <= 300 && score > 200) setCurrPhoto(photos[2])
-    if(score <= 400 && score > 300) setCurrPhoto(photos[3])
-    if(score <= 500 && score > 400) setCurrPhoto(photos[4])
-    if(score <= 600 && score > 500) setCurrPhoto(photos[5])
-    if(score <= 700 && score > 600) setCurrPhoto(photos[6])
-    if( score >= 700) gameOver()
-  }, [score])
+  // useEffect(() => {
+  //   if(score <= 100) setCurrPhoto(photos[0])
+  //   // if(score <= 200 && score > 100) setCurrPhoto(photos[1])
+  //   // if(score <= 300 && score > 200) setCurrPhoto(photos[2])
+  //   // if(score <= 400 && score > 300) setCurrPhoto(photos[3])
+  //   // if(score <= 500 && score > 400) setCurrPhoto(photos[4])
+  //   // if(score <= 600 && score > 500) setCurrPhoto(photos[5])
+  //   // if(score <= 700 && score > 600) setCurrPhoto(photos[6])
+  //   // if( score >= 700) gameOver()
+  // }, [score])
   
   // GAME OVER FUNCTION
   const Faudio = new Audio('/sounds/buzz.wav')
@@ -69,7 +69,7 @@ const Game = ({lives,setLives,score,setScore}) => {
       clearInterval(interv)
       setBtnState('block')
       setLives(0)
-      setCurrPhoto(photos[7])
+      setCurrPhoto(photos[1])
     }else{
       setLives(prev => prev - 1)
     }
@@ -93,7 +93,7 @@ const Game = ({lives,setLives,score,setScore}) => {
 
       {/* COLORS SELECTION  */}
       <div className="colors">
-        {colors.map((C,index)=>{
+        {colors.map((C,index) => {
           return <div 
             key={index}  
             onClick={()=> CheckCorrect(C.id)}
